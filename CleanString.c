@@ -117,11 +117,10 @@ int remove_char (char* str,
     while (*old_string != '\0')
     {
         /* copy all characters except the one to be removed */
-        if (*old_string != character)
-        {
-            *new_string = *old_string;
-            new_string++;
-        }
+        *new_string = *old_string;
+        /* only go to the next character if the copied character was not one
+           to be removed */
+        new_string = new_string + (*old_string != character);
         old_string++;
     }
     /* copy null terminator */
